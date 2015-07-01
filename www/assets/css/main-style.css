@@ -1,0 +1,93 @@
+html, body {
+	font-size: 	12pt;
+	height: 	100%;
+	top: 		0px;
+	left: 		0px;
+
+	margin: 	0px;
+	padding: 	0px;
+}
+
+div, table, p, a, button {
+	border-radius: 0;
+}
+
+#viewport {
+	background-image: 		URL('../img/splash/1920.png');
+	background-attachment: 	fixed;
+	background-position: 	middle center;
+	background-repeat: 		no-repeat;
+	background-size: 		cover;
+	background-color: 		#222;
+
+	color: 					#ddd;
+	margin: 				0px;
+	padding: 				0px;
+	height: 				100%;
+}
+
+.panel {
+	background-color: 	rgba(0,0,0,0.8);
+	border-radius: 		0;
+}
+
+.icon-bar {
+	color: 				#ddd;
+	background-color: 	#ddd;
+}
+.navbar-collapse {
+	background-color: 	#000;
+	position: 			absolute;
+	left: 				0px;
+	right: 				0px;
+	top: 				0px;
+	height: 			auto;
+	padding-left: 		40px;
+	padding-right: 		40px;
+}
+
+.navbar-toggle {
+	float: 			left;
+	margin-left: 	35px;
+}
+
+
+/** Classes */
+
+.card {
+	background-color: rgba(82, 82, 82, 0.7);
+	box-shadow: rgba(0,0,0, 0.5) 0px 6px 12px -8px;
+}
+
+.alive:hover {
+	background-color: rgba(100,100,100,0.9);
+	cursor: pointer;
+}
+
+.spaceless 	{margin: 	0;}
+.tight 		{padding: 	0;}
+
+.w32 {
+	width: 	32px;
+	height: 32px;
+}
+
+.w64 {
+	width: 	64px;
+	height: 64px;
+}
+
+.rusted {
+	background-image: 		URL('../img/ico/protorust3.png');
+	background-repeat: 		no-repeat;
+	background-position: 	top right;
+	background-size: 		contain;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}

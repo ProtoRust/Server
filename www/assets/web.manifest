@@ -1,0 +1,67 @@
+{
+  "lang": "en",
+  "name": "ProtoRust",
+  "short_name": "ProtoRust",
+  "icons": [
+    {
+      "src": "assets/img/ico/protorust-16.png",
+      "sizes": "16x16",
+    }, 
+    {
+      "src": "assets/img/ico/protorust-24.png",
+      "sizes": "24x24",
+    },
+    {
+      "src": "assets/img/ico/protorust-32.png",
+      "sizes": "32x32",
+    },
+    {
+      "src": "assets/img/ico/protorust-48.png",
+      "sizes": "48x48",
+    },
+    {
+      "src": "assets/img/ico/protorust-64.png",
+      "sizes": "64x64",
+    },
+    {
+      "src": "assets/img/ico/protorust-72.png",
+      "sizes": "72x72",
+    },
+    {
+      "src": "assets/img/ico/protorust-96.png",
+      "sizes": "96x96",
+    },
+    {
+      "src": "assets/img/ico/protorust-128.png",
+      "sizes": "128x128",
+    },
+    {
+      "src": "assets/img/ico/protorust-256.png",
+      "sizes": "256x256",
+    },
+    {
+      "src": "assets/img/ico/protorust.png",
+      "sizes": "512x512",
+    }
+  ],
+  "splash_screens": [
+    {
+      "src": "assets/img/splash/320.png",
+      "sizes": "320x240"
+    }, 
+    {
+      "src": "assets/img/splash/1334.png",
+      "sizes": "1334x750"
+    }, 
+    {
+      "src": "assets/img/splash/1920.png",
+      "sizes": "1920x1080"
+    }
+  ],
+
+  "scope": "/",
+  "start_url": "/start.html",
+  "display": "standalone",
+  "orientation": "auto",
+  "theme_color": "blue"
+}
