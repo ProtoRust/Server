@@ -1,5 +1,4 @@
 html, body {
-	font-size: 	12pt;
 	height: 	100%;
 	top: 		0px;
 	left: 		0px;
@@ -10,15 +9,23 @@ html, body {
 
 div, table, p, a, button {
 	border-radius: 0;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 #viewport {
 	background-image: 		URL('../img/splash/1920.png');
 	background-attachment: 	fixed;
-	background-position: 	middle center;
+	background-position: 	center center;
 	background-repeat: 		no-repeat;
 	background-size: 		cover;
 	background-color: 		#222;
+
+	transition: background-size 1s, background-position 1s;
+	-webkit-transition: background-size 1s, background-position 1s;
 
 	color: 					#ddd;
 	margin: 				0px;
@@ -80,7 +87,7 @@ div, table, p, a, button {
 .rusted {
 	background-image: 		URL('../img/ico/protorust3.png');
 	background-repeat: 		no-repeat;
-	background-position: 	top right;
+	background-position: 	top center;
 	background-size: 		contain;
 }
 
