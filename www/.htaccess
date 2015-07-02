@@ -1,7 +1,11 @@
+AddHandler application/x-httpd-php .init 
+AddType application/x-httpd-php .init 
+DirectoryIndex bootstrap.init
+
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !/assets
+RewriteCond %{REQUEST_URI} !assets
 
-RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+RewriteRule ^(.*)$ bootstrap.init?q=$1 [L,QSA]

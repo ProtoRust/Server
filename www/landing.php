@@ -5,12 +5,13 @@
 		<title>ProtoRust</title>
 
 		<!-- Startup configuration -->
-		<link rel="manifest" href="assets/web.manifest">
+		<link rel="manifest" href="<?php print RELROOT;?>assets/web.manifest">
 
 		<!-- Fallback application metadata for legacy browsers -->
 		<meta name="application-name" content="ProtoRust">
 		<meta name="author" content="VisionMise">
-		<link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="assets/img/ico/protorust.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="<?php print RELROOT;?>assets/img/ico/protorust.ico">
 
 		<!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -25,10 +26,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 		<!-- Protorust Style -->
-		<link rel="stylesheet" href="assets/css/main-style.css">
+		<link rel="stylesheet" href="<?php print RELROOT;?>assets/css/main-style.css">
 
 		<!-- Protorust Script -->
-		<script src="assets/js/protorust.js"></script>
+		<script src="<?php print RELROOT;?>assets/js/protorust.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-fixed-top visible-xs">
@@ -76,9 +77,9 @@
 								<div class="container-fluid tight spaceless">
 									<div class="row-fluid center tight spaceless">
 										<div class="spaceless panel col-sm-4">
-											<h3>Get Protorust</h3>
+											<h4>Get Protorust</h4>
 											<hr style="border-color:#676767;">
-											<a class=" btn btn-sm btn-primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="#" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-download"></span>
 												Download
@@ -86,9 +87,9 @@
 											</a>
 										</div>
 										<div class="spaceless panel col-sm-4">
-											<h3>Learn More</h3>
+											<h4>Learn More</h4>
 											<hr style="border-color:#676767;">
-											<a class=" btn btn-sm btn-primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="#" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-info-sign"></span>
 												About
@@ -96,9 +97,9 @@
 											</a>
 										</div>
 										<div class="spaceless panel col-sm-4">
-											<h3>Source Code</h3>
+											<h4>Source Code</h4>
 											<hr style="border-color:#676767;">
-											<a class="btn  btn-sm btn-primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="#" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-random"></span>
 												GitHub

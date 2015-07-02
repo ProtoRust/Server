@@ -1,0 +1,54 @@
+<?php
+
+
+	$loadApi 		= function() {
+
+		$root 				= RELROOT;
+		$apiResult 			= include('../server/api.php');
+
+		if (!$apiResult) {
+			$pwd 			= getcwd();
+			$logStr 		= "API cound not be found: '../server/api.php' in $pwd";
+			error_log($logStr);
+
+			if ($_REQUEST) throw new exception($logStr);
+			return false;
+		}
+
+		return $apiResult;
+	};
+
+	$exitStage 		= function(&$apiResult) {
+
+		$processor 	= function(&$apiResult) {
+
+			if (isset($apiResult['token'])) {
+
+			}
+
+			return true;
+		};
+
+		return $processor($apiResult);
+	};
+
+	$boot 			= function($loader, $exiter) {
+
+		$defineRoot = function() {			
+			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
+			$sep 		= count($sep) - 1;
+			$relRoot 	= str_repeat("../", $sep);
+
+			define('RELROOT', $relRoot);
+		};
+
+		$apiResult 	= $loader($defineRoot());
+		if (($apiResult === true) or (((int) $apiResult) < 0)) $exiter($apiResult);
+
+		$landing 	= include('landing.php');
+		return ($landing and $apiResult);
+	};
+	
+	if (!$boot($loadApi, $exitStage)) throw new exception("Could not boot server");
+
+?>
