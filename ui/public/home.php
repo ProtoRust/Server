@@ -10,7 +10,7 @@
 	<div class="container-fluid tight spaceless">
 		<div class="row-fluid tight spaceless">
 			<br>
-			<div class=" panel col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+			<div class="  col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 				<h4 class="right">Sign In to continue</h4>
 				<div>
 					<form method="post">
