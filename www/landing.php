@@ -62,7 +62,7 @@
 				<div class="row-fluid spaceless tight">
 					<div class="col-sm-8 col-sm-offset-2 tight">
 						<div class="panel panel-body rusted">
-							<div class="panel-heading">
+							<div class="hidden-xs panel-heading">
 								<h2>
 									Protorust
 									<br>
@@ -70,36 +70,38 @@
 								</h2>
 							</div>
 							<div class="panel-body">
-								<h3 class="right">
-									Hello. My name is Protorust.
+								<h3 class="center">
+									Hello. 
+									<br>
+									My name is Protorust.
 								</h3>
 								<br>
 								<div class="container-fluid tight spaceless">
 									<div class="row-fluid center tight spaceless">
-										<div class="spaceless panel col-sm-4">
+										<div class=" panel col-sm-4">
 											<h4>Get Protorust</h4>
 											<hr style="border-color:#676767;">
-											<a class="  -sm -primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="download" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-download"></span>
 												Download
 												</h4>
 											</a>
 										</div>
-										<div class="spaceless panel col-sm-4">
+										<div class=" panel col-sm-4">
 											<h4>Learn More</h4>
 											<hr style="border-color:#676767;">
-											<a class="  -sm -primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="about" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-info-sign"></span>
 												About
 												</h4>
 											</a>
 										</div>
-										<div class="spaceless panel col-sm-4">
+										<div class=" panel col-sm-4">
 											<h4>Source Code</h4>
 											<hr style="border-color:#676767;">
-											<a class="  -sm -primary center" href="#" style="width:60%;">
+											<a class="  -sm -primary center" href="source" style="width:60%;">
 												<h4>
 												<span class="glyphicon glyphicon-random"></span>
 												GitHub
