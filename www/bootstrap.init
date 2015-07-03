@@ -4,35 +4,21 @@
 	$loadApi 		= function() {
 
 		$root 				= RELROOT;
-		$apiResult 			= include('../server/api.php');
+		$requests 			= include('../server/requests.php');
 
-		if (!$apiResult) {
+		if ($requests === false) {
 			$pwd 			= getcwd();
-			$logStr 		= "API cound not be found: '../server/api.php' in $pwd";
+			$logStr 		= "Requests could not be found: '../server/requests.php' in $pwd";
 			error_log($logStr);
 
 			if ($_REQUEST) throw new exception($logStr);
 			return false;
 		}
 
-		return $apiResult;
+		return $requests;
 	};
 
-	$exitStage 		= function(&$apiResult) {
-
-		$processor 	= function(&$apiResult) {
-
-			if (isset($apiResult['token'])) {
-
-			}
-
-			return true;
-		};
-
-		return $processor($apiResult);
-	};
-
-	$boot 			= function($loader, $exiter) {
+	$boot 			= function($loader) {
 
 		$defineRoot = function() {			
 			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
@@ -42,13 +28,43 @@
 			define('RELROOT', $relRoot);
 		};
 
-		$apiResult 	= $loader($defineRoot());
-		if (($apiResult === true) or (((int) $apiResult) < 0)) $exiter($apiResult);
+		$requests 	= $loader($defineRoot());
+		$processor 	= function(&$requests) {
 
-		$landing 	= include('landing.php');
-		return ($landing and $apiResult);
+			if (isset($requests['token'])) {
+				return true;
+			} elseif (isset($requests['q']) or $requests === 0) {
+				$page 		= (isset($requests['q'])) ? $requests['q'] : 'home';
+				$path 		= "../ui/$page.php";
+				$template	= "../ui/template.php";
+
+				ob_start();
+					$included 	= include($template);
+					$buffer 	= ob_get_contents();
+				ob_end_clean();
+
+				if (!$included) {
+					throw new exception("Could not load Template");
+					exit();
+				}
+
+				ob_start();
+					$included 	= include($path);
+					$repContent	= ob_get_contents();
+				ob_end_clean();
+
+				if ($included) {
+					print str_replace('%page%', $repContent, $buffer);
+					exit();
+				}
+			}
+
+			return false;
+		};
+
+		return $processor($requests);
 	};
-	
-	if (!$boot($loadApi, $exitStage)) throw new exception("Could not boot server");
+
+	if (!$boot($loadApi)) throw new exception("Could not boot server");
 
 ?>
