@@ -87,7 +87,7 @@ a:hover {
 .rusted {
 	background-image: 		URL('../img/ico/protorust3.png');
 	background-repeat: 		no-repeat;
-	background-position: 	top center;
+	background-position: 	top right;
 	background-size: 		contain;
 }
 
