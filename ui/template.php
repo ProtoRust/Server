@@ -32,30 +32,6 @@
 		<script src="<?php print RELROOT;?>assets/js/protorust.js"></script>
 	</head>
 	<body>
-		<nav class="navbar navbar-fixed-top visible-xs">
-	      	<div class="container-fluid tight spaceless">
-	        	<div class="navbar-header">
-	          		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-	          		</button>
-	        	</div>
-	        	<div id="navbar" class="navbar-collapse collapse rusted">
-	          		<ul class="nav navbar-nav">
-	            		<li class="active"><a href="/">Home</a></li>
-	          		</ul>
-	          		<ul class="nav navbar-nav navbar-right">
-	            		<li><a href="./about/">About</a></li>
-	            		<li><a href="./docs/">Docs</a></li>
-	            		<li class="active"><a href="./issues/">Issues</a></li>
-	            		<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-	          		</ul>
-	        	</div>
-	      	</div>
-	    </nav>
-
 		<div id="viewport">
 			<div class="hidden-xs" style="height:20%;">&nbsp;</div>
 			<div class="container-fluid spaceless tight">
