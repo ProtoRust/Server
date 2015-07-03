@@ -17,8 +17,6 @@
 		$template 	= "$uiPath/template.php";
 
 		$pagePath 	= realpath($uiPage);
-		print_r([$pagePath, $uiPage, $template, UIROOT, $pageName]);
-
 		if (!$pagePath) return false;
 
 		ob_start();
