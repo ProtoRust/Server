@@ -1,6 +1,46 @@
 <?php
 
-	$init 	= function() {
+	$apiLoader 	= function($requests) {
+		return false;
+	};
+
+	$pageLoader	= function($requests) {
+		$uiPath 	= '../ui' . UIROOT;
+		$default 	= 'home';
+
+		$pageName 	= (isset($requests['q']))
+			? $requests['q']
+			: $default
+		;
+
+		$uiPage 	= "$uiPath/$pageName.php";
+		$template 	= "$uiPath/template.php";
+
+		$pagePath 	= realpath($uiPage);
+		if (!$pagePath) return false;
+
+		ob_start();
+			$included 	= include($template);
+			$buffer 	= ob_get_contents();
+		ob_end_clean();
+
+		if (!$included) {
+			throw new exception("Could not load Template");
+			exit();
+		}
+
+		ob_start();
+			$included 	= include($pagePath);
+			$repContent	= ob_get_contents();
+		ob_end_clean();
+
+		if ($included) {
+			print str_replace('%page%', $repContent, $buffer);
+			exit();
+		}
+	};
+
+	$init 	= function($apiHandler, $pageHandler) {
 
 		$defineRoot 	= function() {			
 			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
@@ -11,15 +51,20 @@
 		};
 
 		$defineRoot();
-
 		$requests 			= include('../server/requests.php');
 		$auth 				= include('../server/auth.php');
 
-		print_r([$auth, $requests]);
+		if ($auth === 1) {
+			define('UIROOT', 'admin');
+		} else {
+			define('UIROOT', 'public');
+		}
+
+		if (!$apiHandler($requests)) return $pageHandler($requests);
+
+		return false;
 	};
 
-
-	$init();
-
+	$init($apiLoader, $pageLoader);
 
 ?>

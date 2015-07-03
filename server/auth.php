@@ -1,6 +1,5 @@
 <?php
 
-
 	$authState 	= function($session) {
 		$state 	= null;
 
@@ -96,8 +95,6 @@
 
 		return $state;
 	};
-
-
 
 	return $authCheck($authState);
 
