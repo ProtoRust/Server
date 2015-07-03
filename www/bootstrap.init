@@ -1,26 +1,8 @@
 <?php
 
+	$init 	= function() {
 
-	$loadApi 		= function() {
-
-		$root 				= RELROOT;
-		$requests 			= include('../server/requests.php');
-
-		if ($requests === false) {
-			$pwd 			= getcwd();
-			$logStr 		= "Requests could not be found: '../server/requests.php' in $pwd";
-			error_log($logStr);
-
-			if ($_REQUEST) throw new exception($logStr);
-			return false;
-		}
-
-		return $requests;
-	};
-
-	$boot 			= function($loader) {
-
-		$defineRoot = function() {			
+		$defineRoot 	= function() {			
 			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
 			$sep 		= count($sep) - 1;
 			$relRoot 	= str_repeat("../", $sep);
@@ -28,55 +10,16 @@
 			define('RELROOT', $relRoot);
 		};
 
-		$requests 	= $loader($defineRoot());
-		$processor 	= function(&$requests) {
-			session_start();
+		$defineRoot();
 
-			if (isset($_SESSION['token'])) {
-				if (!include('../server/auth.php')) return false;
-				$requests = 0;
-			} elseif (isset($requests['token'])) {
-				if (!include('../server/auth.php')) return false;
-				$requests = 0;
-			}
+		$requests 			= include('../server/requests.php');
+		$auth 				= include('../server/auth.php');
 
-
-			if (isset($requests['q']) or $requests === 0) {
-				$page 		= (isset($requests['q'])) ? $requests['q'] : 'home';
-				$path 		= "../ui/$page.php";
-				$template	= "../ui/template.php";
-
-				ob_start();
-					$included 	= include($template);
-					$buffer 	= ob_get_contents();
-				ob_end_clean();
-
-				if (!$included) {
-					throw new exception("Could not load Template");
-					exit();
-				}
-
-				ob_start();
-					$included 	= include($path);
-					$repContent	= ob_get_contents();
-				ob_end_clean();
-
-				if ($included) {
-					print str_replace('%page%', $repContent, $buffer);
-					exit();
-				}
-			}
-
-			return false;
-		};
-
-		return $processor($requests);
+		print_r([$auth, $requests]);
 	};
 
-	if (!$boot($loadApi)) {
-		include('error.html');
-		error_log("Could not boot server");
-		exit();
-	}
+
+	$init();
+
 
 ?>
