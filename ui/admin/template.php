@@ -37,7 +37,7 @@
 			<div class="container-fluid spaceless tight">
 				<div class="row-fluid spaceless tight">
 					<div class="col-sm-8 col-sm-offset-2 tight">
-						<div class="panel panel-body rusted" id="page">
+						<div class="panel panel-default" id="page">
 							%page%
 						</div>
 					</div>

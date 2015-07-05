@@ -36,8 +36,10 @@ a:hover {
 }
 
 .panel {
-	background-color: 	#3D414222;
+	background-color: 	#3D4142;
+	opacity: 			0.8;
 	border-radius: 		0;
+	border:				none;
 }
 
 .icon-bar {
@@ -64,8 +66,9 @@ a:hover {
 /** Classes */
 
 .card {
-	background-color: rgba(82, 82, 82, 0.7);
-	box-shadow: rgba(0,0,0, 0.5) 0px 6px 12px -8px;
+	background-color: 	rgba(0, 0, 0, 0.8);
+	box-shadow: 		rgba(0,0,0, 0.5) 0px 6px 12px -8px;
+	padding: 			10px;
 }
 
 .alive:hover {
@@ -75,6 +78,10 @@ a:hover {
 
 .spaceless 	{margin: 	0;}
 .tight 		{padding: 	0;}
+.padded-xs 	{padding: 	5px;}
+.padded-sm 	{padding: 	10px;}
+.padded-md 	{padding: 	20px;}
+.padded-lg 	{padding: 	30px;}
 
 .w32 {
 	width: 	32px;
@@ -99,4 +106,17 @@ a:hover {
 
 .center {
 	text-align: center;
+}
+
+.lighten-xs {
+	background-color: rgba(100,100,100,0.7);
+}
+.lighten-sm {
+	background-color: rgba(150,150,150,0.75);
+}
+.lighten-md {
+	background-color: rgba(200,200,200,0.8);
+}
+.lighten-lg {
+	background-color: rgba(255,255,255,0.85);
 }
