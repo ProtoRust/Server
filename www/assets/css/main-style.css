@@ -1,5 +1,4 @@
 html, body {
-	font-size: 	12pt;
 	height: 	100%;
 	top: 		0px;
 	left: 		0px;
@@ -10,25 +9,37 @@ html, body {
 
 div, table, p, a, button {
 	border-radius: 0;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 #viewport {
 	background-image: 		URL('../img/splash/1920.png');
 	background-attachment: 	fixed;
-	background-position: 	middle center;
+	background-position: 	center center;
 	background-repeat: 		no-repeat;
 	background-size: 		cover;
 	background-color: 		#222;
+
+	transition: background-size 1s, background-position 1s;
+	-webkit-transition: background-size 1s, background-position 1s;
 
 	color: 					#ddd;
 	margin: 				0px;
 	padding: 				0px;
 	height: 				100%;
+
+	overflow: 				auto;
 }
 
 .panel {
-	background-color: 	rgba(0,0,0,0.8);
+	background-color: 	#3D4142;
+	opacity: 			0.8;
 	border-radius: 		0;
+	border:				none;
 }
 
 .icon-bar {
@@ -55,8 +66,9 @@ div, table, p, a, button {
 /** Classes */
 
 .card {
-	background-color: rgba(82, 82, 82, 0.7);
-	box-shadow: rgba(0,0,0, 0.5) 0px 6px 12px -8px;
+	background-color: 	rgba(0, 0, 0, 0.8);
+	box-shadow: 		rgba(0,0,0, 0.5) 0px 6px 12px -8px;
+	padding: 			10px;
 }
 
 .alive:hover {
@@ -66,6 +78,10 @@ div, table, p, a, button {
 
 .spaceless 	{margin: 	0;}
 .tight 		{padding: 	0;}
+.padded-xs 	{padding: 	5px;}
+.padded-sm 	{padding: 	10px;}
+.padded-md 	{padding: 	20px;}
+.padded-lg 	{padding: 	30px;}
 
 .w32 {
 	width: 	32px;
@@ -90,4 +106,17 @@ div, table, p, a, button {
 
 .center {
 	text-align: center;
+}
+
+.lighten-xs {
+	background-color: rgba(100,100,100,0.7);
+}
+.lighten-sm {
+	background-color: rgba(150,150,150,0.75);
+}
+.lighten-md {
+	background-color: rgba(200,200,200,0.8);
+}
+.lighten-lg {
+	background-color: rgba(255,255,255,0.85);
 }

@@ -1,0 +1,84 @@
+<?php
+
+	$apiLoader 	= function($requests, $authenticated) {
+		if (!$requests) return false;
+
+
+		if (isset($requests['token']) and ($requests['token'] == 0)) {
+			return false;
+		}
+
+		if (!$authenticated) {
+			print "Not Authenticated";
+			exit();
+		}
+
+		print_r($requests);
+		exit();
+	};
+
+	$pageLoader	= function($requests) {
+		$uiPath 	= '../ui/' . UIROOT;
+		$default 	= 'home';
+
+		$pageName 	= (isset($requests['q']))
+			? $requests['q']
+			: $default
+		;
+
+
+		$uiPage 	= "$uiPath/$pageName.php";
+		$template 	= "$uiPath/template.php";
+
+		$pagePath 	= realpath($uiPage);
+		if (!$pagePath) return false;
+
+		ob_start();
+			$included 	= include($template);
+			$buffer 	= ob_get_contents();
+		ob_end_clean();
+
+		if (!$included) {
+			throw new exception("Could not load Template");
+			exit();
+		}
+
+		ob_start();
+			$included 	= include($pagePath);
+			$repContent	= ob_get_contents();
+		ob_end_clean();
+
+		if ($included) {
+			print str_replace('%page%', $repContent, $buffer);
+			exit();
+		}
+	};
+
+	$init 		= function($apiHandler, $pageHandler) {
+
+		$defineRoot 	= function() {			
+			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
+			$sep 		= count($sep) - 1;
+			$relRoot 	= str_repeat("../", $sep);
+
+			define('RELROOT', $relRoot);
+		};
+
+		$defineRoot();
+		$requests 			= include('../server/requests.php');
+		$auth 				= include('../server/auth.php');
+
+		if ($auth === 1) {
+			define('UIROOT', 'admin');
+		} else {
+			define('UIROOT', 'public');
+		}
+
+		if (!$apiHandler($requests, ($auth === 1))) return $pageHandler($requests);
+
+		return false;
+	};
+
+	$init($apiLoader, $pageLoader);
+
+?>
