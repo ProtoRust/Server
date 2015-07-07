@@ -1,13 +1,17 @@
 <?php
 
 	$apiLoader 	= function($requests, $authenticated) {
-		if (!$authenticated) {
-			print "Not Authenticated \n";
-			print "Token: {$requests['token']}";
-			exit();
+		if (!$requests) return false;
+
+
+		if (isset($requests['token']) and ($requests['token'] == 0)) {
+			return false;
 		}
 
-		if (!$requests) return false;
+		if (!$authenticated) {
+			print "Not Authenticated";
+			exit();
+		}
 
 		print_r($requests);
 		exit();
@@ -21,6 +25,7 @@
 			? $requests['q']
 			: $default
 		;
+
 
 		$uiPage 	= "$uiPath/$pageName.php";
 		$template 	= "$uiPath/template.php";
@@ -49,7 +54,7 @@
 		}
 	};
 
-	$init 	= function($apiHandler, $pageHandler) {
+	$init 		= function($apiHandler, $pageHandler) {
 
 		$defineRoot 	= function() {			
 			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
