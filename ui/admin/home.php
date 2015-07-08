@@ -13,7 +13,7 @@
 				<div class="container-fluid tight spaceless">
 					<div class="row-fluid tight">
 						<div class="padded-xs col-sm-4">
-							<div class="lighten-xs card alive">
+							<div class="lighten-xs card alive h200">
 								<h4>
 									<span class="pull-right glyphicon glyphicon-list"></span>
 									Event Log
@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<div class="padded-xs col-sm-4">
-							<div class="lighten-xs card alive">
+							<div class="lighten-xs card alive h200">
 								<h4>
 									<span class="pull-right glyphicon glyphicon-cog"></span>
 									Client Control
@@ -37,7 +37,7 @@
 							</div>
 						</div>
 						<div class="padded-xs col-sm-4">
-							<div class="lighten-xs card alive">
+							<div class="lighten-xs card alive h200">
 								<h4>
 									<span class="pull-right glyphicon glyphicon-console"></span>
 									Console

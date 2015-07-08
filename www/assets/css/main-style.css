@@ -10,6 +10,11 @@ html, body {
 div, table, p, a, button {
 	border-radius: 0;
 	text-decoration: none;
+
+
+	transition: color 0.5s, background-color 0.5s, opacity 0.5s, font-size 0.5s, background-size 1s, background-position 1s, left 0.5s, right 0.5s, top 0.5s, bottom 0.5s, width 0.5s, height 0.5s, display 0.5s, position 0.5s;
+	-webkit-transition: color 0.5s, background-color 0.5s, opacity 0.5s, font-size 0.5s, background-size 1s, background-position 1s, left 0.5s, right 0.5s, top 0.5s, bottom 0.5s, width 0.5s, height 0.5s, display 0.5s, position 0.5s;
+
 }
 
 a:hover {
@@ -23,9 +28,6 @@ a:hover {
 	background-repeat: 		no-repeat;
 	background-size: 		cover;
 	background-color: 		#222;
-
-	transition: background-size 1s, background-position 1s;
-	-webkit-transition: background-size 1s, background-position 1s;
 
 	color: 					#ddd;
 	margin: 				0px;
@@ -91,6 +93,10 @@ a:hover {
 .w64 {
 	width: 	64px;
 	height: 64px;
+}
+
+.h200 {
+	height: 200px;
 }
 
 .rusted {

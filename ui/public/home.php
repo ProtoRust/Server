@@ -1,4 +1,4 @@
-<div class="hidden-xs padded-sm rusted">
+<div class="padded-sm rusted">
 	<h2>
 		Protorust Server
 		<br>
@@ -7,8 +7,8 @@
 </div>
 <div class="">
 	<div class="container-fluid tight spaceless">
-		<div class="row-fluid tight spaceless">
-			<div class=" rusted card col-sm-12">
+		<div class="row-fluid tight card spaceless">
+			<div class=" rusted card col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 				<h4 class="right">Sign In to continue</h4>
 				<div>
 					<form method="post">
@@ -30,6 +30,9 @@
 					</form>
 				</div>
 			</div>
+		</div>
+		<div class="row-fluid tight card spaceless">
+			<div class="col-sm-12">&nbsp;</div>
 		</div>
 	</div>
 </div>

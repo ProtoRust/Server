@@ -63,5 +63,5 @@
   "start_url": "/start.html",
   "display": "standalone",
   "orientation": "auto",
-  "theme_color": "blue"
+  "theme_color": "red"
 }
