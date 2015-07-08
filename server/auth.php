@@ -30,7 +30,7 @@
                 }
             }
 
-        } elseif (isset($_REQUEST['token']) and $_REQUEST['token'] == 0) {
+        } elseif (isset($_REQUEST['token'])) {
             $username       = (isset($_REQUEST['username']))
                 ? $_REQUEST['username']
                 : null
@@ -41,64 +41,47 @@
                 : null
             ;
 
-            if (!$username or !$password) {
-                error_log("(Post Auth) Bad username or password");
-                $state  = -4;
-            }
-
-            $generateToken  = function($username, $password) {
-                return md5(sha1($username).$username.sha1($password.$username));
-            };
-
-            $token          = $generateToken($username, $password);
-            $cert           = realpath("../server/$token");
+            $token          = (isset($_REQUEST['token']))
+                ? $_REQUEST['token']
+                : null
+            ;
 
 
-            if (!$cert) {
-                error_log("(Post Auth) Bad Token: $token");
+            if ((!$username or !$password) and !$token) {
+                error_log("(Token Auth) Bad Token or user account: $username $token");
                 $state  = -1;
             } else {
-                $cert   = file_get_contents($cert);
-                if (!$cert) {
-                    error_log("(Post Auth) Bad Cert: $token");
-                    $state  = -2;
-                } else {
-                    $cert   = ($cert == $token);
-                    if (!$cert) {
-                        error_log("(Post Auth) Token doest match Cert: $cert != $token");
-                        $state  = -3;
-                    } else {
-                        $state      = 1;
-                        $_SESSION['token']  = $token;
-                    }
+
+                if (!$token) {
+                    $generateToken  = function($username, $password) {
+                        return md5(sha1($username).$username.sha1($password.$username));
+                    };
+
+                    $token          = $generateToken($username, $password);
                 }
-            }
 
-        } elseif (isset($_REQUEST['token']) and $_REQUEST['token']) {
-            $token  = $_REQUEST['token'];
-            $cert   = realpath("../server/$token");
-
-            if (!$cert) {
-                error_log("(Token Auth) Bad Token: $token");
-                $state  = -1;
-            } else {
-                $cert   = file_get_contents($cert);
-
+                $cert   = realpath("../server/$token");
                 if (!$cert) {
                     error_log("(Token Auth) Bad Cert: $token");
-                    $state  = -2;
+                    $state  = -1;
                 } else {
-                    $cert   = ($cert == $token);
+                    $cert   = file_get_contents($cert);
 
                     if (!$cert) {
-                        error_log("(Token Auth) Token doest match Cert: $cert != $token");
-                        $state  = -3;
+                        error_log("(Token Auth) Bad Cert: $token");
+                        $state  = -2;
                     } else {
-                        $state  = 1;
+                        $cert   = ($cert == $token);
+
+                        if (!$cert) {
+                            error_log("(Token Auth) Token doest match Cert: $cert != $token");
+                            $state  = -3;
+                        } else {
+                            $state  = 1;
+                            $_SESSION['token']  = $token;
+                        }
                     }
-                    
                 }
-                
             }
         } else {
             $state      = 0;

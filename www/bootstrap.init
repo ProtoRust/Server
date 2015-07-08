@@ -4,9 +4,9 @@
 		if (!$requests) return false;
 
 
-		if (isset($requests['token']) and ($requests['token'] == 0)) {
-			return false;
-		}
+		if (isset($requests['token'])) {
+			if (!$requests['token']) return false;
+		} 
 
 		if (!$authenticated) {
 			print "Not Authenticated";
