@@ -6,7 +6,7 @@
 
         if (isset($session['token'])) {
             $token  = $session['token'];
-            $cert   = realpath("../server/$token");
+            $cert   = realpath("../server/certs/$token");
 
             if (!$cert) {
                 error_log("(Session Auth) Bad Token: $token");
@@ -60,7 +60,7 @@
                     $token          = $generateToken($username, $password);
                 }
 
-                $cert   = realpath("../server/$token");
+                $cert   = realpath("../server/certs/$token");
                 if (!$cert) {
                     error_log("(Token Auth) Bad Cert: $token");
                     $state  = -1;

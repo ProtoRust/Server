@@ -1,6 +1,6 @@
 <?php
 
-	$apiLoader 	= function($requests, $authenticated) {
+	$apiLoader 	= function($requests, $authenticated, &$logger) {
 		if (!$requests) return false;
 
 
@@ -13,8 +13,8 @@
 			exit();
 		}
 
-		print_r($requests);
-		exit();
+		if (handleRequest($requests, $logger)) exit();
+		return false;
 	};
 
 	$pageLoader	= function($requests) {
@@ -55,6 +55,14 @@
 	};
 
 	$init 		= function($apiHandler, $pageHandler) {
+		global $logger;
+
+		$loaders 		= [
+			'libraries',
+			'handlers',
+			'requests',
+			'auth'
+		];
 
 		$defineRoot 	= function() {			
 			$sep 		= explode("/", $_SERVER['REQUEST_URI']);
@@ -65,8 +73,12 @@
 		};
 
 		$defineRoot();
-		$requests 			= include('../server/requests.php');
-		$auth 				= include('../server/auth.php');
+
+		foreach ($loaders as $loader) {$$loader	= include("../server/$loader.php");}
+
+		$logger 			= new logger("../server/logs", 1);
+		foreach ($libraries as $e) {$logger->log($e, "errors", 1);}
+		foreach ($handlers as $e) {$logger->log($e, "errors", 1);}
 
 		if ($auth === 1) {
 			define('UIROOT', 'admin');
@@ -74,7 +86,7 @@
 			define('UIROOT', 'public');
 		}
 
-		if (!$apiHandler($requests, ($auth === 1))) return $pageHandler($requests);
+		if (!$apiHandler($requests, ($auth === 1), $logger)) return $pageHandler($requests);
 
 		return false;
 	};
